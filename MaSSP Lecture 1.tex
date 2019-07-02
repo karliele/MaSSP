@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[utf8]{vietnam}
+\usepackage{amsmath}
+\usepackage{systeme,mathtools}
+
+\title{MaSSP Lecture 1}
+\date{July 2019}
+
+\begin{document}
+
+\maketitle
+\author{Lê Kiều Anh}
+\section{Introduction}
+Machine learning framework: simplify + unify 
+\begin{itemize}
+    \item simplify: đơn giản hóa
+    \item unify: dùng được cho nhiều đầu vào khác nhau
+\end{itemize}
+\underline{Examples:}
+\begin{itemize}
+    \item Biểu diễn Image: không gian $R^{mxnx3}$
+    \\ Tọa độ (i,j) => pixel: độ sáng (intensity)
+    \item Biểu diễn ngôn ngữ: 
+    \\ 1-hot encoding / 1-of-K encoding
+     \\ Từ điển có 1000 từ -> dùng vector có row=1000; col=1 
+
+\section{Basis function:}
+\begin{itemize}
+    \item Định nghĩa: Hàm đặc trưng -> Trích xuất nhứng đặc trưng của đầu vào
+    \item Coordinate: các ý nghĩa của basis function
+    \item Ý nghĩa:
+    \\ Không gian X: X =$y_{1}.X_{1} + y_{2}.X2._{2} +... +y_{n}.X_{n}$
+(y1,y2,...,yn): coordinate để so với basis
+
+    \item Example:
+    \\X là hình 1 người; Y là description của bức hình
+    \begin{itemize}
+        \item Từ X tìm tập hợp vector cơ sở (basis function)$G_{1}$ -> (trích  xuất ra) vector toạ độ $Z_{g}$ (embedding)
+        \item Từ Y tìm tập hợp vector cơ sở (basis function)$G_{1}$ -> (trích  xuất ra) vector tọa độ  $Z_{h}$ (embedding)
+Giải thích: Trích xuất các đặc trưng từ input X và Y, đưa vào trong 1 không gian sao cho $Z_{x}$ và $Z_{y}$ gần nhau
+    \end{itemize}
+\end{itemize}    
+
+\section{Principal Component Analysis (PCA)} 
+\textbf{ PCA làm giảm chiều dữ liệu}\\
+Example: Gray-scale image \\
+    $X$ = 
+    $\begin{bmatrix}
+     x_{11} & x_{12} & ... & x_{1n}\\ 
+     x_{21} & x_{22} & ... & x_{2n}\\
+     ...\\
+     x_{m1} & x_{m2} & ... & x_{mn}\\
+    \end{bmatrix}$
+\begin{itemize}
+    \item img 1: $X^1 = X_0 + {a_1}^1X_1 + ... +{a_k}^1X_k $\\
+    -> coordinates (${a_1}^1X_1, {a_2}^1X_2,...,{a_k}^1X_k$)
+    \item img 2: $X^2 = X_0 + {a_1}^2X_1 + ... +{a_k}^2X_k $\\
+    -> coordinates (${a_1}^2X_1, {a_2}^2X_2,...,{a_k}^2X_k$)
+\end{itemize}
+Tính độ khác nhau giữa $X^1, X^2$ để đánh giá: 
+\begin{itemize}
+    \item C1: Dùng inner product: $\sqrt{\sum x_{ij}^1.x_{ij}^2}$
+    \item C2: Tính hiệu: $\Delta X = X^1 - X^2 = \sqrt{\sum (x_{ij}^1-x_{ij}^2)^2}$
+\end{itemize}
+    
+
+\end{itemize}
+\end{document}

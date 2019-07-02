@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage[utf8]{vietnam}
+\usepackage{amsmath}
+\usepackage{systeme,mathtools}
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\title{MaSSP Lecture 2}
+\date{July 2019}
+
+\begin{document}
+\maketitle
+
+\section{Supervised-learning: }
+\textbf{Dùng để dự đoán output dựa vào input đã biết} \\
+Example: Định giá nhà
+\begin{itemize}
+    \item input: ảnh -> output: price (R) 
+    \item Basis function: vị trí, tuổi, kích thước...=> Mỗi basis biểu diễn trên 1 trục
+    => Từ các tọa độ tạo thành vector z -> Từ z map vào trục price để định giá
+\end{itemize}
+
+\section{Linear Regression}
+\begin{itemize}
+    \item \underline{Linear function}: Ma trận biến đổi tuyến tính bằng cách nhân với 1 vector: $Z^T.W=\hat{y}$ 
+    \item So sánh difference: $d^2 = (y-\hat{y})^2$
+    \item Performance measure: \\ 
+    $W= argmin \sum_{T=1}^N d(y,y) = argmin \sum_{T=1}^N(y-\hat{y})^2$
+\end{itemize}
+
+\section{Linear Classification:}
+Example: Nhận dạng ảnh
+\begin{itemize}
+    \item input: ảnh
+    \item output: nhận dạng người/động vật/trái cây \\
+\end{itemize}
+\textbf{Sử dụng vector xác suất(p):}
+\begin{itemize}
+    \item người : $\begin{bmatrix}
+     1\\ 
+     0\\
+     0\\
+     \end{bmatrix}$
+     \item thú:  $\begin{bmatrix}
+     0\\ 
+     1\\
+     0\\
+     \end{bmatrix}$
+     \item trái cây: $\begin{bmatrix}
+     0\\ 
+     0\\
+     1\\
+     \end{bmatrix}$
+\end{itemize}
+\underline{Ví dụ:} \\
+p = $\begin{bmatrix}
+     0.3\\ 
+     0.6\\
+     0.1\\
+     \end{bmatrix}$ \\
+=> Tổng quát: p = $\begin{bmatrix}
+     p_1\\ 
+     p_2\\
+     p_3\\
+     \end{bmatrix}$ \\ 
+input đi qua basis function $G_1$ (designed) => $Z_{G_1}$.\\
+$Z_{G_1}$ đi qua $G_2: w.z=hat{y}$ =>
+$\hat{y} =
+    \begin{bmatrix}
+     \hat{y}_{1}\\ 
+     \hat{y}_{2}\\
+     ...\\
+     \hat{y}_{d}\\
+     \end{bmatrix}$
+so sánh với: 
+$y = \begin{bmatrix}
+     y_{1}\\ 
+     y_{2}\\
+     ...\\
+     y_{d}\\
+     \end{bmatrix}$\\
+
+\underline{Tính difference: } \\
+\begin{itemize}
+    \item $d(y,\hat{y}) = \sqrt{\sum_{i=1}^d(\hat{y}_i-y_i)^2}$ 
+    \item $d(y,\hat{y}) = \sum_{i=1}^d y_i\hat{y}_i$
+    \item $d(y,\hat{y}) = -\sum_{i=1}^d p_{y_i}.log p_{\hat{y}_i}$ (cross-entropy) \\
+    trong đó $p_{y_i}$ là xác suất thực, $p_{\hat{y}_i}$ là xác suất tính được
+\end{itemize}
+
+\end{document}
